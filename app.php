@@ -1,4 +1,6 @@
 <?php
+  ini_set("display_errors",1);
+  
   require_once("config.php");
   require_once("add.php");
   require_once("del.php");
@@ -94,9 +96,25 @@ footer div a{
 </style>
 </head>
 <body>
+
+<script>
+
+function validateForm() {
+
+         if(document.forms["myForm"]["task"].value == "") {
+         
+           alert("The textfield is empty. Must be filled out!")
+           
+           return false;
+         }  
+}
+
+
+</script>
+
 <div id="container">
 
-     <form method="POST" action="app.php">
+     <form method="POST" action="app.php" onSubmit = "return validateForm()" name="myForm">
             <div class="form-group">
                  <h1 class="text-center">To Do App</h1>
   
@@ -125,13 +143,15 @@ footer div a{
             </div>
      </form>
 </div>
-      <footer><div>Created by <a href="http://adrianstatescu.com">Adrian Statescu</a></div></footer>
+      <footer><div>Created by <a href="http://adrianstatescu.ch">Adrian Statescu</a></div></footer>
 <script>
 
 document.getElementById("addBtn").addEventListener("click", function() {
 
         var form = document.getElementsByTagName("form")[0]
-
+        
+            if(validateForm() == false) return false
+            
             form.submit()
 })
 
