@@ -1,8 +1,7 @@
 <?php
-$servername = "localhost";
-$username = "lancia";
-$password = "adidas88";
-$dbname = "todolist";
+ini_set("display_errors",1);
+require_once("config.php");
+
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
